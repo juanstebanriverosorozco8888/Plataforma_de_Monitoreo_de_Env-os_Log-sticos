@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Transportistas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Plataforma de Monitoreo de Envíos Logísticos</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="clientes.html">Clientes</a>
+            <a href="transportistas.html">Transportistas</a>
+            <a href="envios.html">Envíos</a>
+            <a href="tracking.html">Tracking</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Gestión de Transportistas</h2>
+        <form id="transportista-form">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="text" id="tipo_servicio" placeholder="Tipo de Servicio" required>
+            <input type="text" id="pais" placeholder="País" required>
+            <input type="url" id="endpoint_api" placeholder="Endpoint API" required>
+            <button type="submit">Registrar Transportista</button>
+        </form>
+        <h3>Lista de Transportistas</h3>
+        <ul id="transportistas-list"></ul>
+    </main>
+    <script src="js/api.js"></script>
+    <script src="js/transportistas.js"></script>
+</body>
+</html>

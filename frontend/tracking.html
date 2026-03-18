@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Tracking</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Plataforma de Monitoreo de Envíos Logísticos</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="clientes.html">Clientes</a>
+            <a href="transportistas.html">Transportistas</a>
+            <a href="envios.html">Envíos</a>
+            <a href="tracking.html">Tracking</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Consulta de Tracking</h2>
+        <form id="tracking-form">
+            <input type="text" id="tracking_number" placeholder="Ingrese Tracking Number" required>
+            <button type="submit">Consultar</button>
+        </form>
+        <div id="tracking-result" ">
+            <h3>Estado del Envío</h3>
+            <p><strong>Tracking Number:</strong> <span id="tracking-num"></span></p>
+            <p><strong>Estado:</strong> <span id="estado"></span></p>
+            <p><strong>Ubicación:</strong> <span id="ubicacion"></span></p>
+            <p><strong>Entrega Estimada:</strong> <span id="entrega"></span></p>
+            <h3>Historial</h3>
+            <ul id="historial-list"></ul>
+        </div>
+    </main>
+    <script src="js/api.js"></script>
+    <script src="js/tracking.js"></script>
+</body>
+</html>

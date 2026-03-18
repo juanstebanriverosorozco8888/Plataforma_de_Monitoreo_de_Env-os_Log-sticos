@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Envíos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Plataforma de Monitoreo de Envíos Logísticos</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="clientes.html">Clientes</a>
+            <a href="transportistas.html">Transportistas</a>
+            <a href="envios.html">Envíos</a>
+            <a href="tracking.html">Tracking</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Gestión de Envíos</h2>
+        <form id="envio-form">
+            <input type="text" id="tracking_number" placeholder="Tracking Number" required>
+            <select id="cliente" required>
+                <option value="">Seleccionar Cliente</option>
+            </select>
+            <select id="transportista" required>
+                <option value="">Seleccionar Transportista</option>
+            </select>
+            <input type="text" id="origen" placeholder="Origen" required>
+            <input type="text" id="destino" placeholder="Destino" required>
+            <button type="submit">Registrar Envío</button>
+        </form>
+        <h3>Lista de Envíos</h3>
+        <ul id="envios-list"></ul>
+
+        <h3>Actualizar Estado de Envío</h3>
+        <form id="update-envio-form">
+            <input type="text" id="update-tracking" placeholder="Tracking Number" required>
+            <select id="update-estado" required>
+                <option value="">Seleccionar Nuevo Estado</option>
+                <option value="registrado">Registrado</option>
+                <option value="en_transito">En Tránsito</option>
+                <option value="centro_distribucion">Centro de Distribución</option>
+                <option value="en_reparto">En Reparto</option>
+                <option value="entregado">Entregado</option>
+                <option value="incidente">Incidente</option>
+            </select>
+            <button type="submit">Actualizar Estado</button>
+        </form>
+    </main>
+    <script src="js/api.js"></script>
+    <script src="js/envios.js"></script>
+</body>
+</html>

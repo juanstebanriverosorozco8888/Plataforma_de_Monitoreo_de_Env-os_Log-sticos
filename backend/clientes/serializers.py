@@ -1,14 +1,7 @@
 from rest_framework import serializers
-from .models import Clientes
+from .models import Cliente
 
-
-class ClientesSerializer(serializers.ModelSerializer):
-    """
-    Serializador para el modelo Clientes.
-    Convierte objetos Energizante a JSON y viceversa.
-    """
-
+class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Clientes
-        fields = "__all__"
-        read_only_fields = ["id", "fecha_registro"]
+        model = Cliente
+        fields = '__all__'

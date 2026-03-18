@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Clientes</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Plataforma de Monitoreo de Envíos Logísticos</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="clientes.html">Clientes</a>
+            <a href="transportistas.html">Transportistas</a>
+            <a href="envios.html">Envíos</a>
+            <a href="tracking.html">Tracking</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Gestión de Clientes</h2>
+        <form id="cliente-form">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="email" id="correo" placeholder="Correo" required>
+            <input type="text" id="telefono" placeholder="Teléfono" required>
+            <input type="text" id="empresa" placeholder="Empresa" required>
+            <button type="submit">Registrar Cliente</button>
+        </form>
+        <h3>Lista de Clientes</h3>
+        <ul id="clientes-list"></ul>
+    </main>
+    <script src="js/api.js"></script>
+    <script src="js/clientes.js"></script>
+</body>
+</html>
