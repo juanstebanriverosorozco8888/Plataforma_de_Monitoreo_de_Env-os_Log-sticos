@@ -204,8 +204,3 @@ Aun el frontend es estático, se usa para UI de administración/herramienta sin 
 - Crear workflow de pruebas para endpoints con Postman + fixture de test.
 
 ---
-
-¡Listo! README completo y alineado con el proyecto actual.
-
-
-CODIGO HECHO TOTALMENTE POR CHATGPT, PUES NO SOY UN PROGRAMADOR CON LA CAPACIDAD DE CODIFICAR POR MI SOLO
