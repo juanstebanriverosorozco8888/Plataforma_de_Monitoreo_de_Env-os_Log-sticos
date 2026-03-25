@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             list.innerHTML = '';
             clientes.forEach(cliente => {
                 const li = document.createElement('li');
-                li.textContent = `${cliente.nombre} - ${cliente.correo}`;
+                li.textContent = `${`✈ ${cliente.nombre}`} - ${`✉ ${cliente.correo} - ${`☏ ${cliente.telefono}`} - ${`𖠿 ${cliente.empresa}`}`}`;
                 list.appendChild(li);
             });
         } catch (error) {

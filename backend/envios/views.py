@@ -16,7 +16,7 @@ class EnvioViewSet(viewsets.ModelViewSet):
         Tracking.objects.create(
             tracking_number=instance.tracking_number,
             estado=instance.estado_actual,
-            ubicacion='Origen',
+            ubicacion=instance.origen,
             descripcion=f'Envío creado con estado {instance.estado_actual}'
         )
 
@@ -26,11 +26,14 @@ class EnvioViewSet(viewsets.ModelViewSet):
         instance = serializer.save()
         new_estado = instance.estado_actual
         
+        # Obtener ubicacion del request si se proporciona
+        ubicacion = self.request.data.get('ubicacion', 'Actualización manual')
+        
         # Crear evento de tracking si el estado cambió
         if old_estado != new_estado:
             Tracking.objects.create(
                 tracking_number=instance.tracking_number,
                 estado=new_estado,
-                ubicacion='Actualización manual',
+                ubicacion=ubicacion,
                 descripcion=f'Estado actualizado de {old_estado} a {new_estado}'
             )

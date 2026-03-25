@@ -51,6 +51,10 @@ async function createEnvio(data) {
     });
 }
 
+async function getEnvio(trackingNumber) {
+    return apiRequest(`api/envios/envios/${trackingNumber}/`);
+}
+
 async function updateEnvio(trackingNumber, data) {
     return apiRequest(`api/envios/envios/${trackingNumber}/`, {
         method: 'PATCH',

@@ -6,7 +6,7 @@ async function loadEnvios() {
         list.innerHTML = '';
         envios.forEach(envio => {
             const li = document.createElement('li');
-            li.textContent = `${envio.tracking_number} - ${envio.estado_actual}`;
+            li.textContent = `✈ ${envio.tracking_number} - ${envio.estado_actual}`;
             list.appendChild(li);
         });
     } catch (error) {
@@ -62,16 +62,64 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 const updateForm = document.getElementById('update-envio-form');
+const updateTrackingInput = document.getElementById('update-tracking');
+const updateEstadoSelect = document.getElementById('update-estado');
+const updateUbicacionInput = document.getElementById('update-ubicacion');
+
+let currentEnvio = null;
+
+updateTrackingInput.addEventListener('blur', async () => {
+    const trackingNumber = updateTrackingInput.value.trim();
+    if (trackingNumber) {
+        try {
+            currentEnvio = await getEnvio(trackingNumber);
+        } catch (error) {
+            console.error('Error obteniendo envío:', error);
+            alert('Envío no encontrado');
+            currentEnvio = null;
+        }
+    } else {
+        currentEnvio = null;
+    }
+});
+
+updateEstadoSelect.addEventListener('change', () => {
+    const estado = updateEstadoSelect.value;
+    if (estado === 'entregado' && currentEnvio) {
+        updateUbicacionInput.style.display = 'none';
+        updateUbicacionInput.value = currentEnvio.destino;
+        updateUbicacionInput.required = false;
+    } else if (estado && currentEnvio) {
+        updateUbicacionInput.style.display = 'block';
+        updateUbicacionInput.required = true;
+        if (currentEnvio.estado_actual === 'registrado') {
+            updateUbicacionInput.value = currentEnvio.origen;
+        } else {
+            updateUbicacionInput.value = '';
+        }
+    } else {
+        updateUbicacionInput.style.display = 'none';
+        updateUbicacionInput.required = false;
+    }
+});
+
 updateForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const trackingNumber = document.getElementById('update-tracking').value;
-    const estado = document.getElementById('update-estado').value;
-    console.log('Actualizando envío:', trackingNumber, 'a estado:', estado);
+    const trackingNumber = updateTrackingInput.value;
+    const estado = updateEstadoSelect.value;
+    const ubicacion = updateUbicacionInput.value;
+    console.log('Actualizando envío:', trackingNumber, 'a estado:', estado, 'ubicacion:', ubicacion);
     try {
-        const result = await updateEnvio(trackingNumber, { estado_actual: estado });
+        const data = { estado_actual: estado };
+        if (ubicacion) {
+            data.ubicacion = ubicacion;
+        }
+        const result = await updateEnvio(trackingNumber, data);
         console.log('Resultado de actualización:', result);
         alert('Estado actualizado correctamente');
         updateForm.reset();
+        updateUbicacionInput.style.display = 'none';
+        currentEnvio = null;
         loadEnvios();
     } catch (error) {
         console.error('Error actualizando estado:', error);

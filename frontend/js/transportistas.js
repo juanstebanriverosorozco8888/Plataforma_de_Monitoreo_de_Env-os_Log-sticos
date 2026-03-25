@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             list.innerHTML = '';
             transportistas.forEach(transportista => {
                 const li = document.createElement('li');
-                li.textContent = `${transportista.nombre} - ${transportista.tipo_servicio}`;
+                li.textContent = `${`✈ ${transportista.nombre}`} - ${`⛟ ${transportista.tipo_servicio}`} - ${`⚐ ${transportista.pais}`}`;
                 list.appendChild(li);
             });
         } catch (error) {
