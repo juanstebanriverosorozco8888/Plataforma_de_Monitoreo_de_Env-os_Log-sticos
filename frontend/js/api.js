@@ -17,11 +17,11 @@ async function apiRequest(endpoint, options = {}) {
 
 // Clientes
 async function getClientes() {
-    return apiRequest('api/clientes/clientes/');
+    return apiRequest('api/clientes/');
 }
 
 async function createCliente(data) {
-    return apiRequest('api/clientes/clientes/', {
+    return apiRequest('api/clientes/', {
         method: 'POST',
         body: JSON.stringify(data),
     });
@@ -29,11 +29,11 @@ async function createCliente(data) {
 
 // Transportistas
 async function getTransportistas() {
-    return apiRequest('api/transportistas/transportistas/');
+    return apiRequest('api/transportistas/');
 }
 
 async function createTransportista(data) {
-    return apiRequest('api/transportistas/transportistas/', {
+    return apiRequest('api/transportistas/', {
         method: 'POST',
         body: JSON.stringify(data),
     });
@@ -41,22 +41,22 @@ async function createTransportista(data) {
 
 // Envios
 async function getEnvios() {
-    return apiRequest('api/envios/envios/');
+    return apiRequest('api/envios/');
 }
 
 async function createEnvio(data) {
-    return apiRequest('api/envios/envios/', {
+    return apiRequest('api/envios/', {
         method: 'POST',
         body: JSON.stringify(data),
     });
 }
 
 async function getEnvio(trackingNumber) {
-    return apiRequest(`api/envios/envios/${trackingNumber}/`);
+    return apiRequest(`api/envios/${trackingNumber}/`);
 }
 
 async function updateEnvio(trackingNumber, data) {
-    return apiRequest(`api/envios/envios/${trackingNumber}/`, {
+    return apiRequest(`api/envios/${trackingNumber}/`, {
         method: 'PATCH',
         body: JSON.stringify(data),
     });

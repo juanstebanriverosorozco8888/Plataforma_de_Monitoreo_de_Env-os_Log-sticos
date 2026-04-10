@@ -36,6 +36,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             option.textContent = transportista.nombre;
             transportistaSelect.appendChild(option);
         });
+
+        const envios = await getEnvios();
+        const updateTrackingSelect = document.getElementById('update-tracking');
+        envios.forEach(envio => {
+            const option = document.createElement('option');
+            option.value = envio.tracking_number;
+            option.textContent = envio.tracking_number;
+            updateTrackingSelect.appendChild(option);
+        });
     } catch (error) {
         console.error('Error cargando opciones:', error);
     }
@@ -62,14 +71,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 const updateForm = document.getElementById('update-envio-form');
-const updateTrackingInput = document.getElementById('update-tracking');
+const updateTrackingSelect = document.getElementById('update-tracking');
 const updateEstadoSelect = document.getElementById('update-estado');
 const updateUbicacionInput = document.getElementById('update-ubicacion');
 
 let currentEnvio = null;
 
-updateTrackingInput.addEventListener('blur', async () => {
-    const trackingNumber = updateTrackingInput.value.trim();
+updateTrackingSelect.addEventListener('change', async () => {
+    const trackingNumber = updateTrackingSelect.value;
     if (trackingNumber) {
         try {
             currentEnvio = await getEnvio(trackingNumber);
@@ -105,7 +114,7 @@ updateEstadoSelect.addEventListener('change', () => {
 
 updateForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const trackingNumber = updateTrackingInput.value;
+    const trackingNumber = updateTrackingSelect.value;
     const estado = updateEstadoSelect.value;
     const ubicacion = updateUbicacionInput.value;
     console.log('Actualizando envío:', trackingNumber, 'a estado:', estado, 'ubicacion:', ubicacion);

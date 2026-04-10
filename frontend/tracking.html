@@ -20,7 +20,10 @@
     <main>
         <h2>Consulta de Tracking</h2>
         <form id="tracking-form">
-            <input type="text" id="tracking_number" placeholder="Ingrese Tracking Number" required>
+            <select name="tracking" id="tracking_number" required>
+                <option value="">Ingrese Tracking Number</option>
+            </select>
+    
             <button type="submit">Consultar</button>
         </form>
         <div id="tracking-result">

@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import EnvioViewSet
 
 router = DefaultRouter()
-router.register(r'envios', EnvioViewSet)
+router.register(r'', EnvioViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

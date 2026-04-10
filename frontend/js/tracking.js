@@ -1,6 +1,25 @@
+async function loadTrackingOptions() {
+    const select = document.getElementById('tracking_number');
+    select.innerHTML = '<option value="">Seleccionar Tracking Number</option>';
+
+    try {
+        const envios = await getEnvios();
+        envios.forEach(envio => {
+            const option = document.createElement('option');
+            option.value = envio.tracking_number;
+            option.textContent = envio.tracking_number;
+            select.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error cargando los tracking registrados:', error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('tracking-form');
     const resultDiv = document.getElementById('tracking-result');
+
+    loadTrackingOptions();
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
